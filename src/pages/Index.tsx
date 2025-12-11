@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Instagram, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -57,6 +58,25 @@ const Index = () => {
           <Button variant="outline" onClick={() => setIsDialogOpen(true)}>
             Newsletter / New Releases
           </Button>
+        </div>
+
+        <div className="flex gap-6 mt-8">
+          <a
+            href="https://instagram.com/jackpotmusicgroup"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground hover:text-[#ff0055] transition-colors"
+          >
+            <Instagram size={24} />
+          </a>
+          <a
+            href="https://linkedin.com/jackpotmusic"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground hover:text-[#ff0055] transition-colors"
+          >
+            <Linkedin size={24} />
+          </a>
         </div>
       </main>
 
