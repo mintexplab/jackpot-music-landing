@@ -56,7 +56,7 @@ const Index = () => {
           </Button>
           
           <Button variant="outline" onClick={() => setIsDialogOpen(true)}>
-            Newsletter / New Releases
+            Newsletter
           </Button>
         </div>
 
