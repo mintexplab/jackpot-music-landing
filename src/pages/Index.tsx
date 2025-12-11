@@ -1,12 +1,91 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { toast } from "@/hooks/use-toast";
 
 const Index = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      toast({
+        title: "Error",
+        description: "Please enter your email address",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    // For now, just show success - backend needed for actual notification
+    console.log("Newsletter signup:", email);
+    
+    toast({
+      title: "Subscribed",
+      description: "You've been added to our mailing list.",
+    });
+    
+    setEmail("");
+    setIsDialogOpen(false);
+    setIsSubmitting(false);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen flex flex-col">
+      <main className="flex-1 flex flex-col items-center justify-center px-4">
+        <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight text-center mb-12">
+          Jackpot Music Group
+        </h1>
+        
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Button variant="outline" asChild>
+            <a href="mailto:demos@jackpotmusik.de">Demos</a>
+          </Button>
+          
+          <Button variant="outline" onClick={() => setIsDialogOpen(true)}>
+            Newsletter / New Releases
+          </Button>
+        </div>
+      </main>
+
+      <footer className="py-6 text-center text-muted-foreground text-sm">
+        © 2025 Jackpot Music Entertainment
+      </footer>
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Newsletter / New Releases</DialogTitle>
+            <DialogDescription>
+              Enter your email to stay updated on new releases.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              type="email"
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="bg-secondary border-border"
+            />
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
+              {isSubmitting ? "Subscribing..." : "Subscribe"}
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
