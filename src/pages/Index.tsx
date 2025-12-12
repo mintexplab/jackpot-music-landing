@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -31,17 +32,30 @@ const Index = () => {
 
     setIsSubmitting(true);
     
-    // For now, just show success - backend needed for actual notification
-    console.log("Newsletter signup:", email);
-    
-    toast({
-      title: "Subscribed",
-      description: "You've been added to our mailing list.",
-    });
-    
-    setEmail("");
-    setIsDialogOpen(false);
-    setIsSubmitting(false);
+    try {
+      const { error } = await supabase.functions.invoke("send-newsletter-confirmation", {
+        body: { email },
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Subscribed",
+        description: "You've been added to our mailing list. Check your email for confirmation.",
+      });
+      
+      setEmail("");
+      setIsDialogOpen(false);
+    } catch (error: any) {
+      console.error("Newsletter signup error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to subscribe. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
