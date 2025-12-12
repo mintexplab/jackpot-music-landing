@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -50,7 +51,7 @@ const Index = () => {
           Jackpot Music Group
         </h1>
         
-        <p className="text-muted-foreground text-center max-w-2xl mb-12 text-sm md:text-base">
+        <p className="text-muted-foreground text-center max-w-2xl mb-12 text-sm md:text-base font-medium">
           We are a Canadian record label focusing on up and coming German music acts and artists / Wir sind ein kanadisches Plattenlabel, das sich auf aufstrebende deutsche Musiker und Künstler konzentriert
         </p>
         
@@ -62,6 +63,10 @@ const Index = () => {
           <Button variant="outline" onClick={() => setIsDialogOpen(true)}>
             Newsletter
           </Button>
+          
+          <Button variant="outline" asChild>
+            <Link to="/about">About</Link>
+          </Button>
         </div>
 
         <div className="flex gap-6 mt-8">
@@ -69,7 +74,7 @@ const Index = () => {
             href="https://instagram.com/jackpotmusicgroup"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground hover:text-[#ff0055] transition-colors"
+            className="text-foreground hover:text-primary transition-colors"
           >
             <Instagram size={24} />
           </a>
@@ -77,14 +82,14 @@ const Index = () => {
             href="https://linkedin.com/company/jackpotmusic"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground hover:text-[#ff0055] transition-colors"
+            className="text-foreground hover:text-primary transition-colors"
           >
             <Linkedin size={24} />
           </a>
         </div>
       </main>
 
-      <footer className="py-6 text-center text-muted-foreground text-sm">
+      <footer className="py-6 text-center text-muted-foreground text-sm font-medium">
         © 2025 Jackpot Music Entertainment
       </footer>
 
