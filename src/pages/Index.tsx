@@ -46,9 +46,13 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-1 flex flex-col items-center justify-center px-4">
-        <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight text-center mb-12">
+        <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight text-center mb-4">
           Jackpot Music Group
         </h1>
+        
+        <p className="text-muted-foreground text-center max-w-2xl mb-12 text-sm md:text-base">
+          We are a Canadian record label focusing on up and coming German music acts and artists / Wir sind ein kanadisches Plattenlabel, das sich auf aufstrebende deutsche Musiker und Künstler konzentriert
+        </p>
         
         <div className="flex flex-col sm:flex-row gap-4">
           <Button variant="outline" asChild>
@@ -70,7 +74,7 @@ const Index = () => {
             <Instagram size={24} />
           </a>
           <a
-            href="https://linkedin.com/jackpotmusic"
+            href="https://linkedin.com/company/jackpotmusic"
             target="_blank"
             rel="noopener noreferrer"
             className="text-foreground hover:text-[#ff0055] transition-colors"
