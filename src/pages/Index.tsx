@@ -60,6 +60,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <header className="absolute top-0 right-0 p-6">
+        <Button variant="outline" asChild>
+          <Link to="/auth">NWS Login</Link>
+        </Button>
+      </header>
+      
       <main className="flex-1 flex flex-col items-center justify-center px-4">
         <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight text-center mb-4">
           Jackpot Music Group
