@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col animate-fade-in">
       <header className="p-6">
         <Button variant="outline" asChild>
           <Link to="/" className="flex items-center gap-2">
