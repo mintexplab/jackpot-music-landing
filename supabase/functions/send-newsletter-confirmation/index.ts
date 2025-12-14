@@ -67,11 +67,11 @@ const handler = async (req: Request): Promise<Response> => {
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
-              body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; background-color: #000; color: #fff; }
+              body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; background-color: #fff; color: #000; }
               .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
-              h1 { font-size: 24px; margin-bottom: 24px; }
-              p { line-height: 1.6; margin-bottom: 16px; color: #ccc; }
-              .divider { border-top: 1px solid #333; margin: 32px 0; }
+              h1 { font-size: 24px; margin-bottom: 24px; color: #000; }
+              p { line-height: 1.6; margin-bottom: 16px; color: #333; }
+              .divider { border-top: 1px solid #ccc; margin: 32px 0; }
               .footer { font-size: 12px; color: #666; margin-top: 40px; }
             </style>
           </head>
